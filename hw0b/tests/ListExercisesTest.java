@@ -1,8 +1,4 @@
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +48,21 @@ public class ListExercisesTest {
     }
 
     @Test
+    public void testCommon2() {
+        List<Integer> lst1 = List.of(1, 2, 3, 4, 5, 5);
+        List<Integer> lst2 = List.of(4, 5, 6, 7, 5, 9);
+        List<Integer> lst3 = new ArrayList<>();
+        List<Integer> lstExpected = List.of(4, 5);
+
+        List<Integer> res1 = ListExercises.common(lst1, lst2);
+        List<Integer> res2 = ListExercises.common(lst2, lst3);
+
+        assertThat(res1).isEqualTo(lstExpected);
+        assertThat(res2).isEmpty();
+    }
+
+
+    @Test
     @Order(3)
     @DisplayName("Test countOccurrencesOfC correctness")
     public void testCountOccurrencesOfC() {
@@ -59,6 +70,7 @@ public class ListExercisesTest {
 
         assertThat(ListExercises.countOccurrencesOfC(lst, 'o')).isEqualTo(3);
         assertThat(ListExercises.countOccurrencesOfC(lst, 'a')).isEqualTo(0);
+        assertThat(ListExercises.countOccurrencesOfC(lst, 'e')).isEqualTo(3);
     }
 
 }
